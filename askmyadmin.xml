@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension version="2.5" type="plugin" group="system">
 	<name>plg_system_askmyadmin</name>
-	<author>Denis E Mokhin</author>
-	<authorUrl>http://my-j.ru</authorUrl>
+	<author>Denis Mokhin</author>
+	<authorUrl>http://mokh.in</authorUrl>
 	<creationDate>09.12.2014</creationDate>
-	<copyright>Copyright (C) 2013-2014 my-j.ru - All rights reserved.</copyright>
+	<copyright>Copyright (C) 2013-2015 Denis Mokhin - All rights reserved.</copyright>
 	<license>GNU GPL, see http://www.gnu.org/licenses/gpl-2.0.html</license>
-	<authorEmail>denis@my-j.ru</authorEmail>
-	<version>1.1</version>
+	<authorEmail>denis@mokh.in</authorEmail>
+	<version>1.2</version>
 	<description>PLG_SYSTEM_ASKMYADMIN_DESC</description>
 	<client>administrator</client>
 	<files>
@@ -33,6 +33,6 @@
 	</fields>
 	</config>
 	<updateservers>
-		<server type="extension" name="AskMyAdmin Updates">http://downloads.my-j.ru/askmyadmin.xml</server>
+		<server type="extension" name="AskMyAdmin Updates">http://update.mokh.in/askmyadmin.xml</server>
 	</updateservers>
 </extension>
