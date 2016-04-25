@@ -5,15 +5,15 @@
 *
 * AskMyAdmin prevent of login to backend of site till entering correct key=value pair.
 *
-* Copyright (C) 2013-2014 my-j.ru. All rights reserved. 
+* Copyright (C) 2013-2016 mokhin-tech.ru. All rights reserved. 
 *
 * Author of BackEndToken is:
-* Axel < axel[at]quelloffen.com >
+* Axel < axel@quelloffen.com >
 * http://www.joomlaconsulting.de
 *
 * Author of AskMyAdmin is:
-* Denis E Mokhin < denis[at]my-j.ru >
-* http://my-j.ru
+* Denis Mokhin < denis@mokhin-tech.ru >
+* http://mokhin-tech.ru
 *
 * @license GNU GPL, see http://www.gnu.org/licenses/gpl-2.0.html
 * 
