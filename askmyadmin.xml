@@ -7,7 +7,7 @@
 	<copyright>Copyright (C) 2013-2016 Denis Mokhin - All rights reserved.</copyright>
 	<license>GNU GPL, see http://www.gnu.org/licenses/gpl-2.0.html</license>
 	<authorEmail>denis@mokhin-tech.ru</authorEmail>
-	<version>1.3</version>
+	<version>1.4</version>
 	<description>PLG_SYSTEM_ASKMYADMIN_DESC</description>
 	<client>administrator</client>
 	<files>

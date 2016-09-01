@@ -41,7 +41,7 @@ class plgSystemAskMyAdmin extends  JPlugin
 	{
 		parent :: __construct($subject, $config);
 		
-		$plugin =& JPluginHelper::getPlugin( 'system', 'askmyadmin');
+		$plugin = JPluginHelper::getPlugin( 'system', 'askmyadmin');
  		$this->params = new JParameter( $plugin->params );	
 	}
 
@@ -72,10 +72,13 @@ class plgSystemAskMyAdmin extends  JPlugin
 		}
 		
 		if( JRequest::getMethod() == 'POST' )
-		{		
-			$ref =  $_SERVER['HTTP_REFERER'];
-			$u =& JURI::getInstance( $ref );
-			$request = $u->getVar( $keyname, 'no token set' );			
+		{
+            if( isset($_SERVER['HTTP_REFERER']) )
+            {
+                $ref =  $_SERVER['HTTP_REFERER'];
+                $u = JURI::getInstance( $ref );
+                $request = $u->getVar( $keyname, 'no token set' );
+            }
 		}		
 		
 		//invalid access token
@@ -94,5 +97,3 @@ class plgSystemAskMyAdmin extends  JPlugin
 		}
 	}
 }
-
-?>
