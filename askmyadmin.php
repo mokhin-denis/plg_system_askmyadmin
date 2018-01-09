@@ -5,7 +5,7 @@
 *
 * AskMyAdmin prevent of login to backend of site till entering correct key=value pair.
 *
-* Copyright (C) 2013-2016 mokhin-tech.ru. All rights reserved. 
+* Copyright (C) 2013-2018 mokhin-tech.ru. All rights reserved. 
 *
 * Author of BackEndToken is:
 * Axel < axel@quelloffen.com >

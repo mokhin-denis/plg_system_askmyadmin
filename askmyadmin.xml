@@ -1,28 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<extension version="2.5" type="plugin" group="system">
+<extension version="3.0" type="plugin" group="system" method="upgrade">    
 	<name>plg_system_askmyadmin</name>
 	<author>Denis Mokhin</author>
 	<authorUrl>http://mokhin-tech.ru</authorUrl>
 	<creationDate>09.12.2014</creationDate>
-	<copyright>Copyright (C) 2013-2016 Denis Mokhin - All rights reserved.</copyright>
+	<copyright>Copyright (C) 2013-2018 Denis Mokhin - All rights reserved.</copyright>
 	<license>GNU GPL, see http://www.gnu.org/licenses/gpl-2.0.html</license>
 	<authorEmail>denis@mokhin-tech.ru</authorEmail>
-	<version>1.4</version>
+	<version>1.5</version>
 	<description>PLG_SYSTEM_ASKMYADMIN_DESC</description>
 	<client>administrator</client>
 	<files>
-		<filename plugin="askmyadmin">askmyadmin.php</filename>
-		<filename>index.html</filename>
+		<filename plugin="askmyadmin">askmyadmin.php</filename>		
 		<filename>README.md</filename>
+        <folder>language</folder>
 	</files>
-	<languages folder="language">
-		<language tag="en-GB">en-GB/en-GB.plg_system_askmyadmin.ini</language>
-		<language tag="en-GB">en-GB/en-GB.plg_system_askmyadmin.sys.ini</language>
-		<language tag="ru-RU">ru-RU/ru-RU.plg_system_askmyadmin.ini</language>
-		<language tag="ru-RU">ru-RU/ru-RU.plg_system_askmyadmin.sys.ini</language>
-		<language tag="it-IT">it-IT/it-IT.plg_system_askmyadmin.ini</language> 
-		<language tag="it-IT">it-IT/it-IT.plg_system_askmyadmin.sys.ini</language> 
-	</languages>	
 	<config>
 	<fields name="params">
 		<fieldset name="basic">
