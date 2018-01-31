@@ -2,12 +2,12 @@
 <extension version="3.0" type="plugin" group="system" method="upgrade">    
 	<name>plg_system_askmyadmin</name>
 	<author>Denis Mokhin</author>
-	<authorUrl>http://mokhin-tech.ru</authorUrl>
+	<authorUrl>https://mokhin-tech.ru</authorUrl>
 	<creationDate>09.12.2014</creationDate>
 	<copyright>Copyright (C) 2013-2018 Denis Mokhin - All rights reserved.</copyright>
-	<license>GNU GPL, see http://www.gnu.org/licenses/gpl-2.0.html</license>
+	<license>GNU GPL, please visit http://www.gnu.org/licenses/gpl-2.0.html or see LICENSE.txt</license>
 	<authorEmail>denis@mokhin-tech.ru</authorEmail>
-	<version>1.5</version>
+	<version>1.6</version>
 	<description>PLG_SYSTEM_ASKMYADMIN_DESC</description>
 	<client>administrator</client>
 	<files>
@@ -19,8 +19,8 @@
 	<fields name="params">
 		<fieldset name="basic">
 			<field name="keyname" type="text" size="45" label="PLG_SYSTEM_ASKMYADMIN_KEYNAME" description="PLG_SYSTEM_ASKMYADMIN_KEYNAME_DESC" />
-			<field name="keyvalue" type="text" size="45" label="PLG_SYSTEM_ASKMYADMIN_KEYVALUE" description="PLG_SYSTEM_ASKMYADMIN_KEYVALUE_DESC" />
-			<field name="url"  type="text"  size="45" label="PLG_SYSTEM_ASKMYADMIN_URL"   description="PLG_SYSTEM_ASKMYADMIN_URL_DESC" />
+			<field name="keyvalue" type="text" size="45" label="PLG_SYSTEM_ASKMYADMIN_KEYVALUE" description="PLG_SYSTEM_ASKMYADMIN_KEYVALUE_DESC" />			
+            <field name="url" type="url" default="" label="PLG_SYSTEM_ASKMYADMIN_URL" description="PLG_SYSTEM_ASKMYADMIN_URL_DESC" size="45" />
 		</fieldset>
 	</fields>
 	</config>

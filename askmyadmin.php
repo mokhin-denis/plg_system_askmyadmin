@@ -1,7 +1,7 @@
 <?php
 /**
 *
-* plg_askmyadmin is an extended version of plg_backendtoken plugin
+* plg_system_askmyadmin is an extended version of plg_backendtoken plugin
 *
 * AskMyAdmin prevent of login to backend of site till entering correct key=value pair.
 *
@@ -32,58 +32,66 @@
 // no direct access
 defined('_JEXEC') or die('Restricted access');
 
-jimport( 'joomla.plugin.plugin' );
-
 class plgSystemAskMyAdmin extends  JPlugin 
 {
-
-	function plgAskMyAdmin( &$subject, $config = array() )
+    /**
+	 * Constructor.
+	 *
+	 * @param   object  &$subject  The object to observe.
+	 * @param   array   $config    An optional associative array of configuration settings.
+	 *
+	 * @since   1.6
+	 */
+	public function __construct(& $subject, $config)
 	{
-		parent :: __construct($subject, $config);
-		
-		$plugin = JPluginHelper::getPlugin( 'system', 'askmyadmin');
- 		$this->params = new JParameter( $plugin->params );	
-	}
-
-	function onAfterInitialise()
+        parent::__construct($subject, $config);
+        
+        // Get the application if not done by JPlugin. This may happen during upgrades from Joomla 2.5.
+		if (!$this->app)
+		{
+			$this->app = JFactory::getApplication();
+		}
+    }
+    
+    function onAfterInitialise()
 	{
-		$app = JFactory::getApplication();
+        $app  = $this->app;
 
-		if( !$app->isAdmin() ) 
+		if (!$app->isClient('administrator'))
 		{
 			return;
 		}
 				
 		//already logged in
 		$user = JFactory::getUser();
- 
 		if( !$user->guest )
 		{
 		 	return;
 		}
 				
 		$keyname = $this->params->get('keyname', 'key');
-		$keyvalue   = $this->params->get('keyvalue', '1');
-		
+		$keyvalue   = $this->params->get('keyvalue', '1');		        
 
-		if( JRequest::getMethod() == 'GET' )
+        $request = $app->input->request;
+        
+        if( $app->input->getMethod() == 'GET' )
 		{		
-			$request = JRequest::getVar( $keyname, 'no token set', 'GET' );
+			$requestKey = $request->get($keyname, 'no token set');
 		}
 		
-		if( JRequest::getMethod() == 'POST' )
+		if( $app->input->getMethod() == 'POST' )
 		{
             if( isset($_SERVER['HTTP_REFERER']) )
             {
                 $ref =  $_SERVER['HTTP_REFERER'];
                 $u = JURI::getInstance( $ref );
-                $request = $u->getVar( $keyname, 'no token set' );
+                $requestKey = $u->getVar( $keyname, 'no token set' );                
             }
-		}		
+		}                
 		
 		//invalid access token
-		if( $keyvalue != $request )
-		{
+		if( $keyvalue != $requestKey )
+		{            
 			$url = $this->params->get('url' );
 			
 			//fallback to site
