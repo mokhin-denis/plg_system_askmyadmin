@@ -7,13 +7,14 @@
 	<copyright>Copyright (C) 2013-2018 Denis Mokhin - All rights reserved.</copyright>
 	<license>GNU GPL, please visit http://www.gnu.org/licenses/gpl-2.0.html or see LICENSE.txt</license>
 	<authorEmail>denis@mokhin-tech.ru</authorEmail>
-	<version>1.6</version>
+	<version>1.6.1</version>
 	<description>PLG_SYSTEM_ASKMYADMIN_DESC</description>
 	<client>administrator</client>
 	<files>
 		<filename plugin="askmyadmin">askmyadmin.php</filename>		
 		<filename>README.md</filename>
-        <folder>language</folder>
+		<filename>LICENSE.txt</filename>
+		<folder>language</folder>
 	</files>
 	<config>
 	<fields name="params">
