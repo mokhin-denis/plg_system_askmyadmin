@@ -35,6 +35,14 @@ defined('_JEXEC') or die('Restricted access');
 class plgSystemAskMyAdmin extends  JPlugin 
 {
     /**
+	 * Application object.
+	 *
+	 * @var    JApplicationCms
+	 * @since  3.8.0
+	 */
+	protected $app;
+    
+    /**
 	 * Constructor.
 	 *
 	 * @param   object  &$subject  The object to observe.
