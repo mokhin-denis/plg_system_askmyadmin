@@ -12,6 +12,10 @@ Main idea of this plug-in - to prevent login to administrator's panel by using s
 
 ![it](https://mokhin-tech.ru/media/mod_languages/images/it.gif) Italian (it-IT) by Marco Surian
 
+![pl](https://mokhin-tech.ru/media/mod_languages/images/pl.gif) Polish (pl-PL) by [darekmer](https://www.transifex.com/user/profile/darekmer/)
+
+![fr](https://mokhin-tech.ru/media/mod_languages/images/fr.gif) French (fr-FR) by [Anthony Ceccarelli](https://www.stereonomy.com/)
+
 You can improve current translation or add new languages. Please visit [transifex.com](https://www.transifex.com/mokhin/askmyadmin/)
 
 ## Usage ##

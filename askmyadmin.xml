@@ -4,10 +4,10 @@
 	<author>Denis Mokhin</author>
 	<authorUrl>https://mokhin-tech.ru</authorUrl>
 	<creationDate>09.12.2014</creationDate>
-	<copyright>Copyright (C) 2013-2018 Denis Mokhin - All rights reserved.</copyright>
+	<copyright>Copyright (C) 2013-2019 Denis Mokhin - All rights reserved.</copyright>
 	<license>GNU GPL, please visit http://www.gnu.org/licenses/gpl-2.0.html or see LICENSE.txt</license>
 	<authorEmail>denis@mokhin-tech.ru</authorEmail>
-	<version>1.6.2</version>
+	<version>1.6.3</version>
 	<description>PLG_SYSTEM_ASKMYADMIN_DESC</description>
 	<client>administrator</client>
 	<files>
