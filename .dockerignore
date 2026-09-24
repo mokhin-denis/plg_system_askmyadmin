@@ -1,0 +1,6 @@
+.git
+.agents
+.codex
+compose.yaml
+Dockerfile
+tests

@@ -1,0 +1,45 @@
+services:
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_DATABASE: joomla
+      MYSQL_USER: joomla
+      MYSQL_PASSWORD: joomla_password
+      MYSQL_ROOT_PASSWORD: root_password
+    command: --default-authentication-plugin=mysql_native_password
+    volumes:
+      - db_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -P 3306 -u root -p$$MYSQL_ROOT_PASSWORD --silent"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+
+  joomla:
+    image: ${ASKMYADMIN_IMAGE:-askmyadmin/joomla:6.1.3-php8.3-apache}
+    build:
+      context: .
+      args:
+        JOOMLA_IMAGE: ${JOOMLA_BASE_IMAGE:-joomla:6.1.3-php8.3-apache}
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "${JOOMLA_PORT:-8080}:80"
+    environment:
+      JOOMLA_DB_HOST: db
+      JOOMLA_DB_USER: joomla
+      JOOMLA_DB_PASSWORD: joomla_password
+      JOOMLA_DB_NAME: joomla
+      JOOMLA_SITE_NAME: AskMyAdmin test site
+      JOOMLA_ADMIN_USER: Joomla Administrator
+      JOOMLA_ADMIN_USERNAME: admin
+      JOOMLA_ADMIN_PASSWORD: admin_password
+      JOOMLA_ADMIN_EMAIL: admin@example.test
+      JOOMLA_EXTENSIONS_PATHS: /opt/askmyadmin.tar.gz
+    volumes:
+      - joomla_data:/var/www/html
+
+volumes:
+  db_data:
+  joomla_data:

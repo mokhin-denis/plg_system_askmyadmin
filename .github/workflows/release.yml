@@ -1,0 +1,87 @@
+name: Build and publish release
+
+on:
+  workflow_dispatch:
+    inputs:
+      release_tag:
+        description: "Git tag for the release, for example v2.0.0"
+        required: true
+        type: string
+      prerelease:
+        description: "Mark the GitHub release as a pre-release"
+        required: true
+        default: false
+        type: boolean
+
+permissions:
+  contents: write
+
+concurrency:
+  group: publish-release
+  cancel-in-progress: false
+
+jobs:
+  release:
+    name: Package and publish
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+
+      - name: Build Joomla extension archive
+        id: package
+        shell: bash
+        env:
+          RELEASE_TAG: ${{ inputs.release_tag }}
+        run: |
+          set -Eeuo pipefail
+
+          git check-ref-format "refs/tags/${RELEASE_TAG}"
+
+          version="${RELEASE_TAG#v}"
+          archive="plg_system_askmyadmin-${version}.zip"
+
+          zip -r -9 "${archive}" \
+            askmyadmin.xml \
+            script.php \
+            services \
+            src \
+            language \
+            README.md \
+            LICENSE.txt
+
+          unzip -t "${archive}"
+
+          if unzip -Z1 "${archive}" | grep -Eq '(^|/)(\.git|tests|compose\.yaml|Dockerfile)(/|$)'; then
+            echo "The release archive contains development-only files" >&2
+            exit 1
+          fi
+
+          echo "archive=${archive}" >> "${GITHUB_OUTPUT}"
+          echo "Created ${archive}"
+
+      - name: Publish GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: ${{ inputs.release_tag }}
+          ARCHIVE: ${{ steps.package.outputs.archive }}
+          PRERELEASE: ${{ inputs.prerelease }}
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+
+          release_args=(
+            "${RELEASE_TAG}"
+            "${ARCHIVE}"
+            --repo "${GITHUB_REPOSITORY}"
+            --target "${GITHUB_SHA}"
+            --title "AskMyAdmin ${RELEASE_TAG}"
+            --generate-notes
+          )
+
+          if [[ "${PRERELEASE}" == "true" ]]; then
+            release_args+=(--prerelease)
+          fi
+
+          gh release create "${release_args[@]}"
